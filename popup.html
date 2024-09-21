@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Website Time Tracker Pro</title>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
+  <script src="chart.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    body {
+      width: 350px;
+      max-height: 50vh;
+      font-family: 'Roboto', sans-serif;
+      background-color: #1a1a2e;
+      color: #e0e0e0;
+      padding: 20px;
+      margin: 0;
+      overflow-y: auto;
+    }
+    h2 {
+      margin-top: 0;
+      color: #fff;
+      background-color: #0f3460;
+      padding: 15px;
+      border-radius: 10px;
+      text-align: center;
+      font-size: 1.2em;
+      font-weight: 500;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .toggle {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+    .toggle button {
+      background-color: #16213e;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 25px;
+      transition: all 0.3s ease;
+      font-weight: 500;
+      flex-grow: 1;
+      margin: 0 5px;
+    }
+    .toggle button.active {
+      background-color: #e94560;
+      box-shadow: 0 0 15px rgba(233, 69, 96, 0.5);
+    }
+    .total-time {
+      margin-bottom: 20px;
+      padding: 15px;
+      background-color: #16213e;
+      border-radius: 10px;
+      animation: fadeIn 0.5s ease-out;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    li {
+      margin-bottom: 15px;
+      padding: 15px;
+      background-color: #16213e;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    li:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    li.active {
+      border-left: 5px solid #e94560;
+    }
+    .chart-container {
+      display: none;
+      margin-top: 20px;
+      background-color: #16213e;
+      border-radius: 10px;
+      padding: 15px;
+      animation: slideDown 0.5s ease-out;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .remove-btn {
+      background-color: #e94560;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .remove-btn:hover {
+      background-color: #c81d4e;
+    }
+    .options-btn {
+      display: block;
+      margin: 20px auto 0;
+      background-color: #0f3460;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .options-btn:hover {
+      background-color: #16213e;
+      box-shadow: 0 0 15px rgba(15, 52, 96, 0.5);
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes slideDown {
+      from { max-height: 0; opacity: 0; }
+      to { max-height: 300px; opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <h2>Website Time Tracker Pro</h2>
+  <div class="toggle">
+    <button id="dailyBtn" class="active">Daily</button>
+    <button id="weeklyBtn">Weekly</button>
+    <button id="monthlyBtn">Monthly</button>
+  </div>
+  <div id="totalTime" class="total-time"></div>
+  <div id="stats"></div>
+  <div id="chartContainer" class="chart-container">
+    <canvas id="timeChart"></canvas>
+  </div>
+  <!-- <button id="optionsBtn" class="options-btn">Open Options</button> -->
+  <script src="popup.js"></script>
+</body>
+</html>
